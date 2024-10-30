@@ -159,7 +159,7 @@ const makeBookInfoBox = (metadata, pixbuf) => {
             margin_top: 12,
         })
         box.append(subjectsBox)
-        for (const subject of metadata.subject)
+        for (const subject of [].concat(metadata.subject))
             subjectsBox.insert(makeSubjectBox(subject), -1)
     }
 
