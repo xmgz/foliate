@@ -1,4 +1,5 @@
-<img src="data/com.github.johnfactotum.Foliate.svg" align="left">
+<img src="data/com.github.johnfactotum.Foliate.svg" align="left" style="margin-right:8px"> 
+<br><br>
 
 # Foliate
 
