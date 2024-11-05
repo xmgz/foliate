@@ -135,8 +135,8 @@ msgstr "Читај е-књиге у стилу"
 #. they will be shown in the "About" dialog
 #: src/app.js:405
 msgid "translator-credits"
-msgstr "translator-credits"
-"Томица Кораћ, 2024\n"
+msgstr ""
+"Томица Кораћ, 2024"
 
 #: src/app.js:414
 msgid "Source Code"
