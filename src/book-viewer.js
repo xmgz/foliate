@@ -89,7 +89,7 @@ const ViewPreferencesWindow = GObject.registerClass({
         'theme-flow-box',
         'reduce-animation',
     ],
-}, class extends Adw.PreferencesDialog {
+}, class extends Adw.PreferencesWindow {
     constructor(params) {
         super(params)
         this.font_settings.bindProperties({
@@ -980,8 +980,10 @@ export const BookViewer = GObject.registerClass({
         const win = new ViewPreferencesWindow({
             view_settings: this._view.viewSettings,
             font_settings: this._view.fontSettings,
+            modal: true,
+            transient_for: this.root,
         })
-        win.present(this.root)
+        win.present()
     }
     bookmark() {
         this._bookmark_view.toggle()

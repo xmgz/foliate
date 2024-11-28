@@ -58,7 +58,6 @@
                     <property name="right-margin">9</property>
                     <property name="left-margin">9</property>
                     <property name="wrap-mode">word</property>
-                    <style><class name="inline"/></style>
                   </object>
                 </child>
               </object>

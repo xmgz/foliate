@@ -432,14 +432,16 @@ GObject.registerClass({
         })
     }
     removeBook(file) {
-        const dialog = new Adw.AlertDialog({
+        const dialog = new Adw.MessageDialog({
+            transient_for: this.get_root(),
+            modal: true,
             heading: _('Remove Book?'),
             body: _('Reading progress, annotations, and bookmarks will be permanently lost'),
         })
         dialog.add_response('cancel', _('_Cancel'))
         dialog.add_response('remove', _('_Remove'))
         dialog.set_response_appearance('remove', Adw.ResponseAppearance.DESTRUCTIVE)
-        dialog.present(this.get_root())
+        dialog.present()
         dialog.connect('response', (_, response) => {
             if (response === 'remove') getBooks().delete(file)
         })

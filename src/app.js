@@ -87,11 +87,13 @@ const ApplicationWindow = GObject.registerClass({
         this.content.add_toast(toast)
     }
     error(heading, body) {
-        const dialog = new Adw.AlertDialog({
+        const dialog = new Adw.MessageDialog({
             heading, body,
+            modal: true,
+            transient_for: this,
         })
         dialog.add_response('close', _('Close'))
-        dialog.present(this)
+        dialog.present()
     }
     actionDialog() {
         const window = new Adw.Window({
@@ -240,6 +242,11 @@ export const Application = GObject.registerClass({
                 padding: 0;
             }
 
+            /* fix dark mode background in popovers */
+            textview {
+                background: none;
+            }
+
             .large-button {
                 padding: 6px;
             }
@@ -385,7 +392,7 @@ export const Application = GObject.registerClass({
         window.run_dispose()
     }
     about() {
-        const win = new Adw.AboutDialog({
+        const win = new Adw.AboutWindow({
             application_name: pkg.localeName,
             application_icon: pkg.name,
             version: pkg.version,
@@ -401,6 +408,8 @@ export const Application = GObject.registerClass({
             issue_url: 'https://github.com/johnfactotum/foliate/issues',
             support_url: 'https://github.com/johnfactotum/foliate/blob/gtk4/docs/faq.md',
             debug_info: getDebugInfo(),
+            modal: true,
+            transient_for: this.active_window,
         })
         win.add_link(_('Source Code'), 'https://github.com/johnfactotum/foliate')
         win.add_legal_section('foliate-js', null, Gtk.License.MIT_X11, null)
@@ -413,6 +422,6 @@ export const Application = GObject.registerClass({
         win.add_legal_section('PDF.js',
             '©Mozilla and individual contributors',
             Gtk.License.APACHE_2_0, null)
-        win.present(this.active_window)
+        win.present()
     }
 })
